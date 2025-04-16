@@ -18,6 +18,10 @@ app.add_middleware(
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+@app.get("/")
+def read_root():
+    return {"mensagem": "Sistema para peritos online!"}
+
 @app.post("/enviar")
 async def receber_dados(
     perito: str = Form(...),

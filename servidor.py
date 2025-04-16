@@ -22,6 +22,11 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 def read_root():
     return {"mensagem": "Sistema para peritos online!"}
 
+@app.get("/arquivos")
+def listar_arquivos():
+    arquivos = os.listdir(UPLOAD_DIR)
+    return {"arquivos": arquivos}
+
 @app.post("/enviar")
 async def receber_dados(
     perito: str = Form(...),
